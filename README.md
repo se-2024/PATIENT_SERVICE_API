@@ -177,12 +177,13 @@ Don't forget to give the project a star! Thanks again!
   From github.com:se-2024/PATIENT_SERVICE_API
   * [new branch]      main       -> upstream/main
   ```
-2. Merge the latest code from the upstream main branch into your local main
+2. Check out your fork's local default branch - in this case, we use main. 
+3. Merge the latest code from the upstream main branch into your local main
   `git merge upstream/main`
-3. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-2. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-3. Push to the Branch (`git push origin feature/AmazingFeature`)
-4. Open a Pull Request
+4. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+5. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+6. Push to the Branch (`git push origin feature/AmazingFeature`)
+7. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
