@@ -83,9 +83,66 @@ Required software and how to install them.
 
 ### Installation
 
-1. Clone the repo 
+- New repository setup
+  1. Fork the Project (from the github website)
+  2. Clone the forked repo locally
+      ```sh
+          git clone git@github.com:YOUR_USERNAME/PATIENT_SERVICE_API.git
+      ```
+  3. List the current configured remote repository for your fork. It should show only the forked version of the repository that you have just forked.
     ```sh
-        git clone https://github.com/se-2024/PATIENT_SERVICE_API.git
+      $ git remote -v
+        > origin  git@github.com:YOUR_USERNAME/PATIENT_SERVICE_API.git (fetch)
+        > origin  git@github.com:YOUR_USERNAME/PATIENT_SERVICE_API.git (push)
+    ```
+  4. Specify a new remote upstream repository that will be synced with the fork.
+    ***NOTE***: This will be the original owner - the se-2024/PATIENT_SERVICE_API repo:
+    `git remote add upstream  https://github.com/se-2024/PATIENT_SERVICE_API.git`
+
+  5. List out the remotes and this time you will have another remote:
+    ```sh
+      $ git remote -v
+        origin	git@github.com:fbatroni/PATIENT_SERVICE_API.git (fetch)
+        origin	git@github.com:fbatroni/PATIENT_SERVICE_API.git (push)
+        upstream	git@github.com:se-2024/PATIENT_SERVICE_API.git (fetch)
+        upstream	git@github.com:se-2024/PATIENT_SERVICE_API.git (push)
+    ```
+  
+- Existing repository setup   <br/>
+  ***NOTE***: You already have a PATIENT_SERVICE_API repo and you'd like to reset your existing repo to mirror the se-2024/PATIENT_SERVICE_API repo. These steps will result in resetting the existing code and ***any changes will be lost***.
+  1. List the current configured remote repository for your repo. You should only have one that points to your repository hosted under your github username.
+    ```sh
+    $ git remote -v
+      > origin  git@github.com:YOUR_USERNAME/PATIENT_SERVICE_API.git (fetch)
+      > origin  git@github.com:YOUR_USERNAME/PATIENT_SERVICE_API.git (push)
+    ```
+    If you have another remote you can delete it. The only other remote you will need will be the upstream to the shared repository.
+  2. Specify a new remote upstream repository that will be synced with your repo.
+    ***NOTE***: This will be the original owner - the se-2024/PATIENT_SERVICE_API repo:
+    `git remote add upstream  https://github.com/se-2024/PATIENT_SERVICE_API.git`
+
+  3. List out the remotes and this time you will have another remote:
+    ```sh
+      $ git remote -v
+        origin	git@github.com:fbatroni/PATIENT_SERVICE_API.git (fetch)
+        origin	git@github.com:fbatroni/PATIENT_SERVICE_API.git (push)
+        upstream	git@github.com:se-2024/PATIENT_SERVICE_API.git (fetch)
+        upstream	git@github.com:se-2024/PATIENT_SERVICE_API.git (push)
+    ```
+  4. Reset your local main branch to match the remote upstream
+    `git reset --hard upstream/main`
+
+  5. Force push these changes to your repository so that all code is mirrored. This is a one-time operation.
+    `git push origin main -f`
+    ```sh
+      Enumerating objects: 27, done.
+      Counting objects: 100% (27/27), done.
+      Delta compression using up to 8 threads
+      Compressing objects: 100% (21/21), done.
+      Writing objects: 100% (27/27), 144.44 KiB | 10.32 MiB/s, done.
+      Total 27 (delta 0), reused 2 (delta 0), pack-reused 0
+      To github.com:fbatroni/PATIENT_SERVICE_API.git
+      + e0fc073...0be4789 main -> main (forced update)
     ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -108,11 +165,24 @@ Contributions are what make the open source community such an amazing place to l
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+(Assuming you've followed the steps in "Installation" section):
+1. Fetch the latest from the upstream repository
+  `git fetch upstream`
+  ```sh
+  remote: Enumerating objects: 27, done.
+  remote: Counting objects: 100% (27/27), done.
+  remote: Compressing objects: 100% (21/21), done.
+  remote: Total 27 (delta 0), reused 27 (delta 0), pack-reused 0
+  Unpacking objects: 100% (27/27), 144.42 KiB | 1.60 MiB/s, done.
+  From github.com:se-2024/PATIENT_SERVICE_API
+  * [new branch]      main       -> upstream/main
+  ```
+2. Merge the latest code from the upstream main branch into your local main
+  `git merge upstream/main`
+3. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+2. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+3. Push to the Branch (`git push origin feature/AmazingFeature`)
+4. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
