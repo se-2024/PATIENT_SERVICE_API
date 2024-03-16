@@ -17,7 +17,7 @@ from pydantic import BaseModel
 class EmployeeBase(BaseModel):
     first_name: str
     last_name: str
-    SSN: str
+    ssn: str
     position: str
     hospital_id: int
     department_id: int
@@ -33,8 +33,8 @@ class Patient(BaseModel):
     id: int
     first_name: str
     last_name: str
-    DOB: datetime.date
-    SSN: str
+    dob: datetime.date
+    ssn: str
     gender: str
     address: str
     physician_id: int
