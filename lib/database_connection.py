@@ -12,7 +12,7 @@ def get_db_credential():
     # Opening JSON file
     db_secret = open('.dbsecret.json')
     return json.load(db_secret)
- 
+
 def get_db_connection_string():
     """Get Db Connection String
     Returns:

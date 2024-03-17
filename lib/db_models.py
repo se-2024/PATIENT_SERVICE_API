@@ -12,6 +12,16 @@ from .database_connection import Base
 # using =, and pass the type as a parameter to Column
 # i.e name = Column(String)
 
+class Employee(Base):
+    __tablename__ = "employee"
+    id = Column(Integer, primary_key=True)
+    first_name = Column(String, nullable=False)
+    last_name = Column(String, nullable=False)
+    ssn = Column(String, nullable=False)
+    position = Column(String)
+    hospital_id = Column(Integer, ForeignKey('hospital.id'))
+    department_id = Column(Integer, ForeignKey('department.id'))
+    
 class Physician(Base):
     __tablename__ = "physician"
     id = Column(Integer, primary_key=True)
