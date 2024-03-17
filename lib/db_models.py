@@ -28,3 +28,13 @@ class Patient(Base):
     gender = Column(String)
     address = Column(String)
     physician_id = Column(Integer, ForeignKey('physician.id'))
+    insurances = relationship('Insurance', backref='patient')
+
+class Insurance(Base):
+    __tablename__="insurance"
+    id = Column(Integer, primary_key=True)
+    patient_id = Column(Integer, ForeignKey('patient.id'))
+    provider_name = Column(String,nullable=False)
+    policy_number = Column(String,nullable=False)
+    
+    

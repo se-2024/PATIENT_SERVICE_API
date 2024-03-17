@@ -46,3 +46,9 @@ class Patient(BaseModel):
     # i.e. id = data["id"] or id = data.id
     class Config:
         orm_mode = True
+
+class Insurance (BaseModel):
+    id: int
+    provider_name: str
+    policy_number: str
+    patient_id: int
