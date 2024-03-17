@@ -46,3 +46,14 @@ class Patient(BaseModel):
     # i.e. id = data["id"] or id = data.id
     class Config:
         orm_mode = True
+        
+        
+class Medication(BaseModel):
+    id: int
+    name: str
+    brand: str
+    
+    
+    
+    class Config:
+        orm_mode = True
