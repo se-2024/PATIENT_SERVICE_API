@@ -4,20 +4,20 @@
 -- such as adding or modifying tables and relationships.
 
 -- uncomment the below statements to recreate the schema
--- DROP TYPE IF EXISTS _roomType CASCADE;
--- DROP TABLE IF EXISTS hospital CASCADE;
--- DROP TABLE IF EXISTS department CASCADE;
--- DROP TABLE IF EXISTS employee CASCADE;
--- DROP TABLE IF EXISTS nurse CASCADE;
--- DROP TABLE IF EXISTS manager CASCADE;
--- DROP TABLE IF EXISTS physician CASCADE;
--- DROP TABLE IF EXISTS patient CASCADE;
--- DROP TABLE IF EXISTS insurance CASCADE;
--- DROP TABLE IF EXISTS appointment CASCADE;
--- DROP TABLE IF EXISTS medication CASCADE;
--- DROP TABLE IF EXISTS prescription CASCADE;
--- DROP TABLE IF EXISTS room_type CASCADE;
--- DROP TABLE IF EXISTS room CASCADE; 
+DROP TYPE IF EXISTS _roomType CASCADE;
+DROP TABLE IF EXISTS hospital CASCADE;
+DROP TABLE IF EXISTS department CASCADE;
+DROP TABLE IF EXISTS employee CASCADE;
+DROP TABLE IF EXISTS nurse CASCADE;
+DROP TABLE IF EXISTS manager CASCADE;
+DROP TABLE IF EXISTS physician CASCADE;
+DROP TABLE IF EXISTS patient CASCADE;
+DROP TABLE IF EXISTS insurance CASCADE;
+DROP TABLE IF EXISTS appointment CASCADE;
+DROP TABLE IF EXISTS medication CASCADE;
+DROP TABLE IF EXISTS prescription CASCADE;
+DROP TABLE IF EXISTS room_type CASCADE;
+DROP TABLE IF EXISTS room CASCADE; 
 
 -- Hospital Table
 CREATE TABLE hospital (
@@ -167,3 +167,26 @@ CREATE TABLE room (
     -- room is available until someone explicitly books it
     available BOOLEAN NOT NULL DEFAULT TRUE
 );
+
+-- Adding some data to hospital table to populate existing hospitals
+INSERT INTO hospital (
+	name, address)
+	VALUES ('John Hopkins', 'Baltimore, MD');
+
+INSERT INTO hospital (
+	name, address)
+	VALUES ('Mount Sinai', 'New York');
+
+INSERT INTO department (
+    name,
+    hospital_id)
+    VALUES('emergency', 1);
+
+INSERT INTO department (
+    name,
+    hospital_id)
+    VALUES('pediatric', 1);
+INSERT INTO department (
+    name,
+    hospital_id)
+    VALUES('OR', 1);
