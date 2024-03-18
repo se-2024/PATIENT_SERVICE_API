@@ -46,3 +46,85 @@ class Patient(BaseModel):
     # i.e. id = data["id"] or id = data.id
     class Config:
         orm_mode = True
+
+class AppointmentBase(BaseModel):
+    patient_id: int
+    physician_id: int
+    appointment_date: date
+    description: Optional[str] = None
+
+class Appointment(AppointmentBase):
+    id: int
+
+    class Config:
+        orm_mode = True
+
+class Hospital(BaseModel):
+    id: int
+    name: str
+    address: str
+
+    class Config:
+        orm_mode = True
+
+class Insurance(BaseModel):
+    id: int
+    patient_id: int
+    provider_name: str
+    policy_number: str
+
+    class Config:
+        orm_mode = True
+
+class Manager(BaseModel):
+    id: int
+    employee_id: int
+
+    class Config:
+        orm_mode = True
+
+class Medication(BaseModel):
+    id: int
+    name: str
+    brand: str
+    description: Optional[str] = None
+
+    class Config:
+        orm_mode = True
+
+class Nurse(EmployeeBase):
+    id: int
+
+    class Config:
+        orm_mode = True
+
+class Prescription(BaseModel):
+    id: int
+    patient_id: int
+    prescribing_physician_id: int
+    medication_id: int
+    prescription_date: date
+    quantity: int
+    dosage: Optional[str] = None
+    frequency: Optional[str] = None
+    start_date: Optional[date] = None
+    end_date: Optional[date] = None
+    refills_available: int = 0
+
+    class Config:
+        orm_mode = True
+
+class Room(BaseModel):
+    id: int
+    room_type_id: int
+    available: bool
+
+    class Config:
+        orm_mode = True
+
+class RoomType(BaseModel):
+    id: int
+    type: str
+
+    class Config:
+        orm_mode = True
