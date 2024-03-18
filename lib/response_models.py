@@ -39,6 +39,14 @@ class Patient(BaseModel):
     address: str
     physician_id: int
 
+    class Config:
+        orm_mode = True
+
+class Hopistal(BaseModel):
+    hospital_id: int
+    name: str
+    address: str
+
     # This Config class is used to provide configurations to Pydantic.
     # https://docs.pydantic.dev/latest/api/config/
     # Pydantic's orm_mode will tell the Pydantic model to read the data 
