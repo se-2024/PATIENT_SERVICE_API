@@ -42,7 +42,7 @@ class Patient(BaseModel):
     class Config:
         orm_mode = True
 
-class Hopistal(BaseModel):
+class hospital(BaseModel):
     hospital_id: int
     name: str
     address: str

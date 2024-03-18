@@ -29,9 +29,9 @@ class Patient(Base):
     address = Column(String)
     physician_id = Column(Integer, ForeignKey('physician.id'))
 
-class Hopistal(Base):
-    __tablename__ = "hopistal"
+class Hospital(Base):
+    __tablename__ = "hospital"
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     address = Column(String)
-    hopistal_id = Column(Integer, ForeignKey('hopistal.id'))
+    hospital_id = Column(Integer, ForeignKey('hospital.id'))
