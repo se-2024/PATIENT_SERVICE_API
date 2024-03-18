@@ -28,3 +28,10 @@ class Patient(Base):
     gender = Column(String)
     address = Column(String)
     physician_id = Column(Integer, ForeignKey('physician.id'))
+    
+class Medication(Base):
+    __tablename__ = "medication"
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+    brand = Column(String, nullable=False)
+    description = Column(String)
