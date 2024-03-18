@@ -13,6 +13,10 @@ from pydantic import BaseModel
 # Pydantic models declare the types using :,
 # the new type annotation syntax/type hints:
 # i.e name: str
+class Department(BaseModel):
+   id: int
+   name: str
+   hospital_id: int
 
 class EmployeeBase(BaseModel):
     first_name: str

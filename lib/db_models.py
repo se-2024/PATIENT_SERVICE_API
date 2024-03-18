@@ -11,12 +11,19 @@ from .database_connection import Base
 # SQLAlchemy models define attributes
 # using =, and pass the type as a parameter to Column
 # i.e name = Column(String)
+class Department(Base):
+    __tablename__ = "department"
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+    hospital_id = Column(Integer, ForeignKey('hospital.id'))
+
 
 class Physician(Base):
     __tablename__ = "physician"
     id = Column(Integer, primary_key=True)
     specialty = Column(String)
     patients = relationship('Patient', backref='physician')
+
 
 class Patient(Base):
     __tablename__ = "patient"
