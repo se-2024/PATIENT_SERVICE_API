@@ -4,7 +4,7 @@ from . import db_models
 
 
 def get_hospital(db: Session, hopistal_id: int):
-    return db.query(db_models.hospital).filter(db_models.hospital.id == hospital_id).first()
+    return db.query(db_models.Hospital).filter(db_models.Hospital.id == hopistal_id).first()
 
 def get_hospitals(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(db_models.hospital).offset(skip).limit(limit).all()
+    return db.query(db_models.Hospital).offset(skip).limit(limit).all()

@@ -31,7 +31,6 @@ class Patient(Base):
 
 class Hospital(Base):
     __tablename__ = "hospital"
-    id = Column(Integer, primary_key=True)
+    hospital_id = Column(Integer, ForeignKey('hospital.id'))
     name = Column(String, nullable=False)
     address = Column(String)
-    hospital_id = Column(Integer, ForeignKey('hospital.id'))
