@@ -34,3 +34,8 @@ def get_patients(skip: int = 0, limit: int = 100, db: Session = Depends(get_db))
 def get_physicians(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     physicians = physician_crud.get_physicians(db, skip=skip, limit=limit)
     return physicians
+
+@app.get("/employees/", response_model=List[response_models.EmployeeBase])
+def get_employees(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    employees = employee_crud.get_employees(db, skip=skip, limit=limit)
+    return employees
