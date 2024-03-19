@@ -28,3 +28,20 @@ class Patient(Base):
     gender = Column(String)
     address = Column(String)
     physician_id = Column(Integer, ForeignKey('physician.id'))
+
+class Prescription(Base):
+    __tablename__ = "prescription"
+    id = Column(Integer, primary_key=True)
+    #patient_id = Column(Integer, nullable=False)
+    #prescribing_physician_id = Column(Integer, nullable=False)
+    #medication_id = Column(Integer, nullable=False)
+    prescription_date = Column(Date, nullable=False)
+    quantity = Column(Integer, nullable= False)
+    dosage = Column(String)
+    frequency = Column(String)
+    start_date = Column(Date)
+    end_date = Column(Date)
+    refills_available = Column(Integer, nullable=False, default = 0)
+    patient_id = Column(Integer, ForeignKey('patient.id'))
+    medication_id = Column(Integer, ForeignKey('medication.id'))
+    prescribing_physician_id = Column(Integer, ForeignKey('physician.id'))
