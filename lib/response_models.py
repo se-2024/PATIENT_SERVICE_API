@@ -19,6 +19,16 @@ class Department(BaseModel):
     name: str
     hospital_id: int
 
+class Medication(BaseModel):
+    id: int
+    name: str
+    brand: str
+    description: str
+    
+    
+    class Config:
+        orm_mode = True
+        
 class EmployeeBase(BaseModel):
     first_name: str
     last_name: str
@@ -69,3 +79,5 @@ class Prescription(BaseModel):
 
     class Config:
         orm_mode = True
+        
+        

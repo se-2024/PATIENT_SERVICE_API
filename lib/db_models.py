@@ -34,6 +34,7 @@ class Department(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     hospital_id = Column(Integer, ForeignKey('hospital.id'))
+
 class Prescription(Base):
     __tablename__ = "prescription"
     id = Column(Integer, primary_key=True)
@@ -47,3 +48,10 @@ class Prescription(Base):
     patient_id = Column(Integer, ForeignKey('patient.id'))
     medication_id = Column(Integer, ForeignKey('medication.id'))
     prescribing_physician_id = Column(Integer, ForeignKey('physician.id'))
+    
+class Medication(Base):
+    __tablename__ = "medication"
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+    brand = Column(String, nullable=False)
+    description = Column(String)
