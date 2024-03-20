@@ -77,3 +77,9 @@ class Insurance(Base):
     policy_number = Column(String,nullable=False)
 
 
+
+class Hospital(Base):
+    __tablename__ = "hospital"
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+    address = Column(String)

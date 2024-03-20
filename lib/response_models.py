@@ -29,7 +29,7 @@ class Medication(BaseModel):
     class Config:
         orm_mode = True
         
-class EmployeeBase(BaseModel):
+class Employee(BaseModel):
     first_name: str
     last_name: str
     ssn: str
@@ -37,7 +37,7 @@ class EmployeeBase(BaseModel):
     hospital_id: int
     department_id: int
 
-class Physician(EmployeeBase):
+class Physician(Employee):
     id: int
     specialty: str
 
@@ -53,6 +53,14 @@ class Patient(BaseModel):
     gender: str
     address: str
     physician_id: int
+
+    class Config:
+        orm_mode = True
+
+class Hospital(BaseModel):
+    id: int
+    name: str
+    address: str
 
     # This Config class is used to provide configurations to Pydantic.
     # https://docs.pydantic.dev/latest/api/config/
