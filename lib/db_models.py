@@ -12,11 +12,23 @@ from .database_connection import Base
 # using =, and pass the type as a parameter to Column
 # i.e name = Column(String)
 
-class Physician(Base):
-    __tablename__ = "physician"
+
+class Employee(Base):
+    __tablename__ = "employee"
     id = Column(Integer, primary_key=True)
+    first_name = Column(String, nullable=False)
+    last_name = Column(String, nullable=False)
+    ssn = Column(String, nullable=False)
+    position = Column(String)
+    hospital_id = Column(Integer, ForeignKey('hospital.id'))
+    department_id = Column(Integer, ForeignKey('department.id'))
+
+class Physician(Employee):
+    __tablename__ = "physician"
+    id = Column(Integer, ForeignKey('employee.id'))
     specialty = Column(String)
     patients = relationship('Patient', backref='physician')
+
 
 class Patient(Base):
     __tablename__ = "patient"
@@ -63,3 +75,5 @@ class Insurance(Base):
     patient_id = Column(Integer, ForeignKey('patient.id'))
     provider_name = Column(String,nullable=False)
     policy_number = Column(String,nullable=False)
+
+
