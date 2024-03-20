@@ -38,6 +38,10 @@ class Patient(BaseModel):
     gender: str
     address: str
     physician_id: int
+class Hospital(BaseModel):
+    hospital_id: int
+    hopsital_name: str
+    address: str
 
     # This Config class is used to provide configurations to Pydantic.
     # https://docs.pydantic.dev/latest/api/config/
