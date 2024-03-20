@@ -15,9 +15,10 @@ from pydantic import BaseModel
 # i.e name: str
 
 class EmployeeBase(BaseModel):
+    id : int
     first_name: str
     last_name: str
-    ssn: str
+    ssn: int
     position: str
     hospital_id: int
     department_id: int
@@ -38,6 +39,62 @@ class Patient(BaseModel):
     gender: str
     address: str
     physician_id: int
+
+class Department(BaseModel):
+    id: int
+    name: str
+    hospital_id: int
+
+class Hospital(BaseModel):
+     id: int
+     name: str
+     address: str  
+    
+class Manager(EmployeeBase) :
+      id : int
+    
+class Insurance(BaseModel) :
+      id : int
+      patient_id : int
+      provider_name : str
+      policy_number : int
+
+class Nurse(BaseModel) :
+      id : int
+      qualification: str 
+
+class Room(BaseModel) :
+      id : int
+      room_type_id : int
+      available: datetime.date
+
+class Room_Type(BaseModel) :
+      id : int
+      type : str
+class Prescription(BaseModel):
+    id: int
+    patient_id : int
+    prescibing_physician_id : int
+    medication_id : int
+    prescription_date : datetime.date
+    quantity : int
+    dosage : int
+    frequency : str
+    start_date : datetime.date
+    end_date : datetime.date
+    refills_available : datetime.date
+    
+class Appointment(BaseModel):
+    id: int
+    patient_id : int
+    prescibing_physician_id : int
+    appointment_date : datetime.date
+    description : str
+class Medication(BaseModel):
+    id: int
+    name : str
+    brand : str
+    description : str
 
     # This Config class is used to provide configurations to Pydantic.
     # https://docs.pydantic.dev/latest/api/config/
