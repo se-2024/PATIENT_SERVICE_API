@@ -7,7 +7,7 @@ from typing import List
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
-from lib import patient_crud, physician_crud, employee_crud, appointment_crud, department_crud, nurse_crud, hospital_crud, medication_crud, manager_crud, insurance_crud, room_crud, room_type_crud
+from lib import patient_crud, physician_crud, employee_crud, appointment_crud, department_crud, nurse_crud, hospital_crud, medication_crud, manager_crud, insurance_crud, room_crud, room_type_crud, prescription_crud
 from lib import response_models
 from lib.database_connection import SessionLocal
 
@@ -75,6 +75,7 @@ def get_insurances(skip: int = 0, limit: int = 100, db: Session = Depends(get_db
     insurances = insurance_crud.get_insurances(db, skip=skip, limit=limit)
     return insurances
 
+
 @app.get("/rooms/", response_model=List[response_models.Room])
 def get_rooms(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     rooms = room_crud.get_rooms(db, skip=skip, limit=limit)
@@ -84,3 +85,8 @@ def get_rooms(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 def get_room_types(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     room_types = room_type_crud.get_room_types(db, skip=skip, limit=limit)
     return room_types
+
+@app.get("/prescriptions/", response_model=List[response_models.Prescription])
+def get_prescriptions(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    prescriptions = prescription_crud.get_prescriptions(db, skip=skip, limit=limit)
+    return prescriptions
