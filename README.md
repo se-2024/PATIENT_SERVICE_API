@@ -157,6 +157,10 @@ Useful examples of how a project can be used. Additional screenshots, code examp
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+## Testing
+### Unit and Integration Testing
+[pytest framework](https://docs.pytest.org/en/7.1.x/getting-started.html) - a Python testing framework that can be used to write various types of software tests, including unit tests, integration tests, end-to-end tests, and functional tests
+[pytest-sqlalchemy-mock](https://github.com/resulyrt93/pytest-sqlalchemy-mock) - pytest fixtures to create an in-memory DB instance on tests and dump your raw test data
 <!-- CONTRIBUTING -->
 ## Contributing
 
