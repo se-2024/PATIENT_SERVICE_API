@@ -14,8 +14,27 @@ from pydantic import BaseModel
 # the new type annotation syntax/type hints:
 # i.e name: str
 
+<<<<<<< HEAD
 class EmployeeBase(BaseModel):
     id: int
+=======
+class Department(BaseModel):
+    id: int
+    name: str
+    hospital_id: int
+
+class Medication(BaseModel):
+    id: int
+    name: str
+    brand: str
+    description: str
+    
+    
+    class Config:
+        orm_mode = True
+        
+class Employee(BaseModel):
+>>>>>>> upstream/main
     first_name: str
     last_name: str
     ssn: str
@@ -23,7 +42,7 @@ class EmployeeBase(BaseModel):
     hospital_id: int
     department_id: int
 
-class Physician(EmployeeBase):
+class Physician(Employee):
     id: int
     specialty: str
 
@@ -40,6 +59,7 @@ class Patient(BaseModel):
     address: str
     physician_id: int
 
+<<<<<<< HEAD
 class Prescription(BaseModel):
     id: int
     patient_id: int
@@ -68,10 +88,15 @@ class Department(BaseModel):
 class NurseBase(BaseModel):
     id: int
     qualification: str
+=======
+    class Config:
+        orm_mode = True
+>>>>>>> upstream/main
 
 class Hospital(BaseModel):
     id: int
     name: str
+<<<<<<< HEAD
     address: str      
 
 class Manager(BaseModel):
@@ -105,6 +130,9 @@ class Room_Type(BaseModel):
 
 
 
+=======
+    address: str
+>>>>>>> upstream/main
 
     # This Config class is used to provide configurations to Pydantic.
     # https://docs.pydantic.dev/latest/api/config/
@@ -113,3 +141,28 @@ class Room_Type(BaseModel):
     # i.e. id = data["id"] or id = data.id
     class Config:
         orm_mode = True
+
+
+
+class Prescription(BaseModel):
+    id: int
+    patient_id: int
+    prescribing_physician_id: int
+    medication_id: int
+    prescription_date: datetime.date
+    quantity: int
+    dosage: str
+    frequency: str
+    start_date: datetime.date
+    end_date: datetime.date
+    refills_available: int
+
+    class Config:
+        orm_mode = True
+        
+        
+class Insurance (BaseModel):
+    id: int
+    provider_name: str
+    policy_number: str
+    patient_id: int
