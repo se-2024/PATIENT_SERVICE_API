@@ -160,3 +160,6 @@ cython_debug/
 #.idea/
 
 .dbsecret.json
+
+# VSCode-specific
+.vscode/
