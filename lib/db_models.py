@@ -3,7 +3,7 @@
 # SQLAlchemy uses the term "model" to refer to these classes 
 # and instances that interact with the database.
 """
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Date
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Date, TIMESTAMP
 from sqlalchemy.orm import mapped_column, relationship
 from .database_connection import Base
 
@@ -83,3 +83,11 @@ class Hospital(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     address = Column(String)
+
+class Appointment(Base):
+    __tablename__ = "appointment"
+    id = Column(Integer, primary_key=True)
+    patient_id = Column(Integer, ForeignKey('patient.id'))
+    physician_id = Column(Integer, ForeignKey('physician.id'))
+    appointment_date = Column(TIMESTAMP,nullable=False)
+    description = Column(String)
