@@ -7,7 +7,11 @@ from typing import List
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
+<<<<<<< HEAD
 from lib import patient_crud, physician_crud, employee_crud, department_crud, hospital_crud, manager_crud, medication_crud, insurance_crud, nurse_crud, room_crud, room_type_crud, prescription_crud, appointment_crud
+=======
+from lib import employee_crud, hospital_crud, patient_crud, physician_crud, department_crud, prescription_crud, medication_crud, insurance_crud
+>>>>>>> upstream/main
 from lib import response_models
 from lib.database_connection import SessionLocal
 
@@ -35,11 +39,36 @@ def get_physicians(skip: int = 0, limit: int = 100, db: Session = Depends(get_db
     physicians = physician_crud.get_physicians(db, skip=skip, limit=limit)
     return physicians
 
+<<<<<<< HEAD
 @app.get("/employees/", response_model=List[response_models.EmployeeBase])
+=======
+@app.get("/departments/", response_model=List[response_models.Department])
+def get_departments(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    departments = department_crud.get_departments(db, skip=skip, limit=limit)
+    return departments
+
+@app.get("/prescriptions/", response_model=List[response_models.Prescription])
+def get_prescriptions(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    prescriptions = prescription_crud.get_prescriptions(db, skip=skip, limit=limit)
+    return prescriptions
+
+@app.get("/medications/", response_model=List[response_models.Medication])
+def get_medications(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    medications = medication_crud.get_medications(db, skip=skip, limit=limit)
+    return medications
+
+@app.get("/insurances/", response_model=List[response_models.Insurance])
+def get_insurance(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    insurances = insurance_crud.get_insurance(db, skip=skip, limit=limit)
+    return insurances
+
+@app.get("/employees/", response_model=List[response_models.Employee])
+>>>>>>> upstream/main
 def get_employees(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     employees = employee_crud.get_employees(db, skip=skip, limit=limit)
     return employees
 
+<<<<<<< HEAD
 @app.get("/department/", response_model=List[response_models.Department])
 def get_departments(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     get_departments = department_crud.get_departments(db, skip=skip, limit=limit)
@@ -89,3 +118,9 @@ def get_appoitments(skip: int = 0, limit: int = 100, db: Session = Depends(get_d
 def get_medications(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     get_mendications = room_crud.get_medications(db, skip=skip, limit=limit)
     return get_medications
+=======
+@app.get("/hospitals/", response_model=List[response_models.Hospital])
+def get_employees(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    employees = hospital_crud.get_hospitals(db, skip=skip, limit=limit)
+    return employees
+>>>>>>> upstream/main
