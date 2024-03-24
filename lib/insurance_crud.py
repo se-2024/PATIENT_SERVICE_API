@@ -6,6 +6,11 @@ from . import db_models
 def get_insurance(db: Session, insurance_id: int):
     return db.query(db_models.Insurance).filter(db_models.Insurance.id == insurance_id).first()
 
+<<<<<<< HEAD
+def get_insurances(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(db_models.Insurance).offset(skip).limit(limit).all()
+=======
 def get_insurance(db: Session, skip: int = 0, limit: int = 100):
     return db.query(db_models.Insurance).offset(skip).limit(limit).all()
 
+>>>>>>> upstream/main

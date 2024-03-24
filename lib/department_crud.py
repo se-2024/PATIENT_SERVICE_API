@@ -8,4 +8,7 @@ def get_department(db: Session, department_id: int):
 
 def get_departments(db: Session, skip: int = 0, limit: int = 100):
     return db.query(db_models.Department).offset(skip).limit(limit).all()
+<<<<<<< HEAD
+gi=======
 
+>>>>>>> upstream/main

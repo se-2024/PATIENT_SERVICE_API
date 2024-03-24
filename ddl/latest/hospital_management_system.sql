@@ -190,3 +190,11 @@ INSERT INTO department (
     name,
     hospital_id)
     VALUES('OR', 1);
+
+INSERT INTO  appointment (
+    name,
+    appoitment_id)
+    VALUES('OR', 1);
+
+
+
