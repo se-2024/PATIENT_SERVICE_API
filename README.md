@@ -148,6 +148,16 @@ Required software and how to install them.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+## Development
+
+### Coding standards
+- [pre-commit](https://pre-commit.com/) - Git hook scripts that are useful for identifying simple issues before submission to code review.
+- Code linting
+  - [Flake8](https://github.com/PyCQA/flake8) - A linter tool that checks your code for style and syntax errors
+- Code formatting
+  - Black - A Python code formatter that automatically formats your code according to a set of predefined rules
+- isort - A Python utility/library to sort imports alphabetically, and automatically separated into sections and by type
+* By using Flake8 and Black, you can ensure good quality of your Python code.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
