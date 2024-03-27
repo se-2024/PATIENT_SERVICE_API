@@ -69,28 +69,3 @@ class Hospital(BaseModel):
     # i.e. id = data["id"] or id = data.id
     class Config:
         orm_mode = True
-
-
-
-class Prescription(BaseModel):
-    id: int
-    patient_id: int
-    prescribing_physician_id: int
-    medication_id: int
-    prescription_date: datetime.date
-    quantity: int
-    dosage: str
-    frequency: str
-    start_date: datetime.date
-    end_date: datetime.date
-    refills_available: int
-
-    class Config:
-        orm_mode = True
-        
-        
-class Insurance (BaseModel):
-    id: int
-    provider_name: str
-    policy_number: str
-    patient_id: int
