@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS appointment CASCADE;
 DROP TABLE IF EXISTS medication CASCADE;
 DROP TABLE IF EXISTS prescription CASCADE;
 DROP TABLE IF EXISTS room_type CASCADE;
-DROP TABLE IF EXISTS room CASCADE; 
+DROP TABLE IF EXISTS room CASCADE;
 
 -- Hospital Table
 CREATE TABLE hospital (
@@ -38,7 +38,7 @@ CREATE TABLE department (
 
 -- Employee Table (generic employee, includes nurses, physicians and managers)
 -- employee is a general table that can represent any employee within the hospital,
--- including those who might not directly interact with patients. 
+-- including those who might not directly interact with patients.
 CREATE TABLE employee (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,
@@ -169,24 +169,112 @@ CREATE TABLE room (
 );
 
 -- Adding some data to hospital table to populate existing hospitals
-INSERT INTO hospital (
-	name, address)
-	VALUES ('John Hopkins', 'Baltimore, MD');
+-- Hospital data
+INSERT INTO
+    hospital (name, address)
+VALUES (
+        'John Hopkins', 'Baltimore, MD'
+    ),
+    ('Mount Sinai', 'New York, NY');
 
-INSERT INTO hospital (
-	name, address)
-	VALUES ('Mount Sinai', 'New York');
+-- Department data
+INSERT INTO
+    department (name, hospital_id)
+VALUES ('Emergency', 1),
+    ('Pediatric', 1),
+    ('OR', 2);
 
-INSERT INTO department (
-    name,
-    hospital_id)
-    VALUES('emergency', 1);
+-- Room types
+INSERT INTO
+    room_type (type)
+VALUES ('surgery'),
+    ('ICU'),
+    ('maternity'),
+    ('mental_health');
 
-INSERT INTO department (
-    name,
-    hospital_id)
-    VALUES('pediatric', 1);
-INSERT INTO department (
-    name,
-    hospital_id)
-    VALUES('OR', 1);
+-- Rooms for each room type
+INSERT INTO
+    room (room_type_id, available)
+VALUES (1, TRUE),
+    (2, TRUE),
+    (3, TRUE),
+    (4, TRUE);
+
+-- Employees: physicians, nurses, managers
+-- Note: Need to populate employee before nurses, physicians, and managers
+INSERT INTO
+    employee (
+        first_name, last_name, ssn, position, hospital_id, department_id
+    )
+VALUES (
+        'Alice', 'Smith', '123456789', 'Physician', 1, 1
+    ),
+    (
+        'Bob', 'Johnson', '987654321', 'Nurse', 1, 2
+    ),
+    (
+        'Carol', 'Williams', '123459876', 'Manager', 1, 2
+    );
+
+-- Physician
+INSERT INTO physician (id, specialty) VALUES (1, 'Cardiology');
+
+-- Nurse
+INSERT INTO nurse (id, qualification) VALUES (2, 'Registered Nurse');
+
+-- Manager
+INSERT INTO manager (id) VALUES (3);
+
+-- Patients and their details
+INSERT INTO
+    patient (
+        first_name, last_name, physician_id, dob, ssn, gender, address
+    )
+VALUES (
+        'John', 'Doe', 1, '1985-02-15', '555123456', 'Male', '123 Elm St, Baltimore, MD'
+    ),
+    (
+        'Jane', 'Roe', 1, '1990-07-23', '555987654', 'Female', '456 Oak St, Baltimore, MD'
+    );
+
+-- Insurance for patients
+INSERT INTO
+    insurance (
+        patient_id, provider_name, policy_number
+    )
+VALUES (1, 'HealthCo', 'POL123'),
+    (2, 'WellnessInsure', 'POL456');
+
+-- Medications
+INSERT INTO
+    medication (name, brand, description)
+VALUES (
+        'Lisinopril', 'Prinivil', 'Treats high blood pressure'
+    ),
+    (
+        'Metformin', 'Glucophage', 'Treats type 2 diabetes'
+    );
+
+-- Prescriptions for patients
+INSERT INTO
+    prescription (
+        patient_id, prescribing_physician_id, medication_id, prescription_date, quantity, dosage, frequency, start_date, end_date, refills_available
+    )
+VALUES (
+        1, 1, 1, '2023-04-01', 30, '10 mg', 'once a day', '2023-04-01', '2023-05-01', 3
+    ),
+    (
+        2, 1, 2, '2023-04-01', 60, '500 mg', 'twice a day', '2023-04-01', '2023-07-01', 1
+    );
+
+-- Appointments for patients
+INSERT INTO
+    appointment (
+        patient_id, physician_id, appointment_date, description
+    )
+VALUES (
+        1, 1, '2023-05-01 10:00:00', 'Routine check-up'
+    ),
+    (
+        2, 1, '2023-05-01 11:00:00', 'Follow-up on treatment'
+    );

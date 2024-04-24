@@ -7,6 +7,7 @@ than the database models. It provides the data validation and conversion
 classes and instances.
 """
 import datetime
+
 from pydantic import BaseModel
 
 # Note:
@@ -14,22 +15,25 @@ from pydantic import BaseModel
 # the new type annotation syntax/type hints:
 # i.e name: str
 
+
 class Department(BaseModel):
     id: int
     name: str
     hospital_id: int
+
 
 class Medication(BaseModel):
     id: int
     name: str
     brand: str
     description: str
-    
-    
+
     class Config:
         orm_mode = True
-        
+
+
 class Employee(BaseModel):
+    id: int
     first_name: str
     last_name: str
     ssn: str
@@ -37,12 +41,14 @@ class Employee(BaseModel):
     hospital_id: int
     department_id: int
 
+
 class Physician(Employee):
     id: int
     specialty: str
 
     class Config:
         orm_mode = True
+
 
 class Patient(BaseModel):
     id: int
@@ -57,6 +63,7 @@ class Patient(BaseModel):
     class Config:
         orm_mode = True
 
+
 class Hospital(BaseModel):
     id: int
     name: str
@@ -64,12 +71,11 @@ class Hospital(BaseModel):
 
     # This Config class is used to provide configurations to Pydantic.
     # https://docs.pydantic.dev/latest/api/config/
-    # Pydantic's orm_mode will tell the Pydantic model to read the data 
+    # Pydantic's orm_mode will tell the Pydantic model to read the data
     # even if it is not a dict, but an ORM model (or any other arbitrary object with attributes)
     # i.e. id = data["id"] or id = data.id
     class Config:
         orm_mode = True
-
 
 
 class Prescription(BaseModel):
@@ -87,9 +93,9 @@ class Prescription(BaseModel):
 
     class Config:
         orm_mode = True
-        
-        
-class Insurance (BaseModel):
+
+
+class Insurance(BaseModel):
     id: int
     provider_name: str
     policy_number: str
