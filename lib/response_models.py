@@ -89,8 +89,31 @@ class Prescription(BaseModel):
         orm_mode = True
         
         
-class Insurance (BaseModel):
+class Insurance(BaseModel):
     id: int
     provider_name: str
     policy_number: str
     patient_id: int
+
+class Nurse(BaseModel):
+    id: int
+    Qualifiaction: str
+
+class Room(BaseModel):
+    id: int
+    room_type_id: int
+    available: str  
+
+class Manager(BaseModel):
+    id: int      
+    
+
+class Appointment(BaseModel):
+    id: int
+    appointment_patient_id: int
+    appointment_physician_id: int 
+    appointment_date: datetime.date  
+
+class Room_Type(BaseModel):
+    id: int
+    type: str   

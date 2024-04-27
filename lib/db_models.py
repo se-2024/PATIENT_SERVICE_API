@@ -76,10 +76,38 @@ class Insurance(Base):
     provider_name = Column(String,nullable=False)
     policy_number = Column(String,nullable=False)
 
-
-
 class Hospital(Base):
     __tablename__ = "hospital"
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     address = Column(String)
+
+class Nurse(Base):
+    __tablename__ = "nurse"
+    id = Column(Integer, primary_key=True)
+    qualification = Column(String)
+    address = Column(String)    
+
+class Appointment(Base):
+    __tablename__ = "appointment"
+    id = Column(Integer, primary_key=True)
+    patient_id = Column(Integer, ForeignKey('patient.id'))
+    physician_id = Column(Integer, ForeignKey('pyhsician.id'))
+    appointment_date = Column(Date)
+    description = Column(String)    
+
+class Room(Base):
+    __tablename__ = "room"
+    id = Column(Integer, primary_key=True)
+    room_type_id = Column(Integer, ForeignKey('room_type.id')) 
+    available = Column(String)   
+
+class Manager(Base):
+    __tablename__ = "manager"
+    id = Column(Integer, primary_key=True)  
+
+class Room_Type(Base):
+    __tablename__ = "room_type"
+    id = Column(Integer, primary_key=True)
+    type = Column(String)  
+     
